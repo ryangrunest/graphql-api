@@ -14,7 +14,7 @@ const typeDefs = gql`
     room: String
     day: String
     format: String
-    track: String
+    track: String @deprecated(reason: "switching to tag based model")
     level: String
   }
 `;
