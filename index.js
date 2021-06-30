@@ -1,46 +1,7 @@
-const { ApolloServer, gql } = require("apollo-server");
+const { ApolloServer } = require("apollo-server");
 const SessionAPI = require("./datasources/sessions.js");
-
-const typeDefs = gql`
-  type Query {
-    sessions(
-      id: ID
-      title: String
-      description: String
-      startsAt: String
-      endsAt: String
-      room: String
-      day: String
-      format: String
-      track: String
-      level: String
-    ): [Session]
-    sessionById(id: ID): Session
-  }
-  type Session {
-    id: ID!
-    title: String!
-    description: String
-    startsAt: String
-    endsAt: String
-    room: String
-    day: String
-    format: String
-    track: String @deprecated(reason: "switching to tag based model")
-    level: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    sessions(_, __, { dataSources }, info) {
-      return dataSources.SessionAPI.getSessions();
-    },
-    sessionById(_, { id }, { dataSources }, info) {
-      return dataSources.SessionAPI.getSessionById(id);
-    },
-  },
-};
+const typeDefs = require("./schema.js");
+const resolvers = require("./resolvers.js");
 
 const dataSources = () => {
   return {
