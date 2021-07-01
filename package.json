@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ryangrunest/graphql-api#readme",
   "dependencies": {
     "apollo-datasource": "^0.9.0",
+    "apollo-datasource-rest": "^0.14.0",
     "apollo-server": "^2.12.0",
     "graphql": "^15.5.1",
     "lodash": "^4.17.21",
